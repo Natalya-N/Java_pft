@@ -10,6 +10,6 @@ public class GroupDeletionTests extends TestBase {
     appManager.getGroupHelper().selectGroup();
     appManager.getGroupHelper().deleteGroup();
     appManager.getGroupHelper().returnToGroupPage();
-    appManager.logOut();
+    appManager.getSessionHelper().logOut();
   }
 }

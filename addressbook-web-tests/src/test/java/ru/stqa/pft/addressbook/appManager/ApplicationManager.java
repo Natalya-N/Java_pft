@@ -9,12 +9,14 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.concurrent.TimeUnit;
 
-public class ApplicationManager extends ContactHelper{
+public class ApplicationManager {
+
     ChromeDriver wd;
 
     private NavigationHelper navigationHelper;
     private GroupHelper groupHelper;
     private SessionHelper sessionHelper;
+    private ContactHelper contactHelper;
 
     public void init() {
         wd = new ChromeDriver();
@@ -23,11 +25,8 @@ public class ApplicationManager extends ContactHelper{
         groupHelper = new GroupHelper(wd);
         navigationHelper = new NavigationHelper(wd);
         sessionHelper = new SessionHelper(wd);
+        contactHelper = new ContactHelper(wd);
         sessionHelper.login("admin", "secret");
-    }
-
-    public void logOut() {
-        wd.findElement(By.linkText("Logout")).click();
     }
 
     public void stop() {
@@ -58,5 +57,13 @@ public class ApplicationManager extends ContactHelper{
 
     public NavigationHelper getNavigationHelper() {
         return navigationHelper;
+    }
+
+    public ContactHelper getContactHelper() {
+        return contactHelper;
+    }
+
+    public SessionHelper getSessionHelper() {
+        return sessionHelper;
     }
 }

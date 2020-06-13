@@ -9,6 +9,10 @@ public class ContactHelper {
 
     private ChromeDriver wd;
 
+    public ContactHelper(ChromeDriver wd) {
+        this.wd = wd;
+    }
+
     public void returnToHomePage() {
         wd.findElement(By.linkText("home")).click();
     }
