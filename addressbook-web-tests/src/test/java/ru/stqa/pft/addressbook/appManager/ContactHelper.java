@@ -19,13 +19,28 @@ public class ContactHelper extends HelperBase {
         type(By.name("lastname"), contactData.getLastName());
         type(By.name("company"), contactData.getCompany());
         type(By.name("address"), contactData.getAddress());
-        click(By.name("theform"));
+        //click(By.name("theform"));
         type(By.name("mobile"), contactData.getMobilePhone());
         type(By.name("email"), contactData.getEmail());
         getFromSelectMenu(By.name("bday"), contactData.getDayOfBirth());
         getFromSelectMenu(By.name("bmonth"), contactData.getMonthOfBirth());
         type(By.name("byear"), contactData.getYearOfBirth());
+    }
+
+    public void createContact(){
         click(By.xpath("(//input[@name='submit'])[2]"));
+    }
+
+    public void selectContact() {
+        click(By.id("10"));
+    }
+
+    public void modifyContact() {
+        click(By.xpath("//img[@alt='Edit']"));
+    }
+
+    public void updateContact() {
+        click(By.xpath("(//input[@name='update'])[2]"));
     }
 }
 
