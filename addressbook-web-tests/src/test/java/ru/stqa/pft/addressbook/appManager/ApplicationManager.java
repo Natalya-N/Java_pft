@@ -21,7 +21,7 @@ public class ApplicationManager {
     private ContactHelper contactHelper;
 
     public void init() {
-        String browser = BrowserType.IE;
+        String browser = BrowserType.CHROME;
         if (browser.equals(BrowserType.FIREFOX)) {
             wd = new FirefoxDriver();
         } else if (browser.equals(BrowserType.CHROME)) {
