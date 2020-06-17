@@ -10,7 +10,7 @@ public class ContactCreationTests extends TestBase {
         appManager.getNavigationHelper().goToAddNewPage();
         appManager.getContactHelper().feelContactCreation(new ContactData("Natalya", "Nechaeva", "MyCompany",
                 "MyAddress", "+79643326754", "testjft@test.ru",
-                "26", "May", "1992", "TestGroupNull1"));
+                "26", "May", "1992", "TestGroupNull1"), true);
         appManager.getContactHelper().createContact();
         appManager.getContactHelper().returnToHomePage();
         appManager.getSessionHelper().logOut();
