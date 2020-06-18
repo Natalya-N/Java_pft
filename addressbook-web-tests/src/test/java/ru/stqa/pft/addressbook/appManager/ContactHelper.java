@@ -12,10 +12,6 @@ public class ContactHelper extends HelperBase {
         super(wd);
     }
 
-    public void returnToHomePage() {
-        click(By.linkText("home"));
-    }
-
     public void feelContactCreation(ContactData contactData, boolean creation) {
         type(By.name("firstname"), contactData.getFirstName());
         type(By.name("lastname"), contactData.getLastName());

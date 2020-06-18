@@ -12,7 +12,7 @@ public class ContactCreationTests extends TestBase {
                 "MyAddress", "+79643326754", "testjft@test.ru",
                 "26", "May", "1992", "TestGroupNull1"), true);
         appManager.getContactHelper().createContact();
-        appManager.getContactHelper().returnToHomePage();
+        appManager.getNavigationHelper().returnToHomePage();
         appManager.getSessionHelper().logOut();
     }
 

@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase{
                 "MyAddress", "+79643326754", "testjft@test.ru",
                 "26", "May", "1992", null), false);
         appManager.getContactHelper().updateContact();
-        appManager.getContactHelper().returnToHomePage();
+        appManager.getNavigationHelper().returnToHomePage();
         appManager.getSessionHelper().logOut();
     }
 }
