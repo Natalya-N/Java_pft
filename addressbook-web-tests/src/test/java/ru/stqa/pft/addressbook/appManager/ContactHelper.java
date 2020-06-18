@@ -29,7 +29,7 @@ public class ContactHelper extends HelperBase {
         }
     }
 
-    public void createContact() {
+    public void clickCreateContact() {
         click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
@@ -48,6 +48,16 @@ public class ContactHelper extends HelperBase {
     public void deleteContact() {
         click(By.xpath("//input[@value='Delete']"));
         wd.switchTo().alert().accept();
+    }
+
+
+    public void createContact(ContactData contactData, boolean creation) {
+        feelContactCreation(contactData, creation);
+        clickCreateContact();
+    }
+
+    public boolean isContactExists() {
+        return isElementPresent(By.name("selected[]"));
     }
 }
 
