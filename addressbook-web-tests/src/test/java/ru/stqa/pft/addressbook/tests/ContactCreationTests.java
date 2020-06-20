@@ -16,7 +16,8 @@ public class ContactCreationTests extends TestBase {
                 "26", "May", "1992", "TestGroupNull1"));
         List<ContactData> contactsAfter = appManager.getContactHelper().getContactList();
         Assert.assertEquals(contactsBefore.size()+1, contactsAfter.size());
+        contactsAfter.remove(contactsAfter.size()-1);
+        Assert.assertEquals(contactsBefore, contactsAfter);
         appManager.getSessionHelper().logOut();
     }
-
 }

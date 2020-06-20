@@ -26,6 +26,7 @@ public class ContactModificationTests extends TestBase{
         appManager.getNavigationHelper().returnToHomePage();
         List<ContactData> contactsAfter = appManager.getContactHelper().getContactList();
         Assert.assertEquals(contactsBefore.size(), contactsAfter.size());
+        Assert.assertEquals(contactsBefore, contactsAfter);
         appManager.getSessionHelper().logOut();
     }
 }

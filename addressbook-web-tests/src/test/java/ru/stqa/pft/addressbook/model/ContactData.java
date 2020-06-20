@@ -1,5 +1,7 @@
 package ru.stqa.pft.addressbook.model;
 
+import java.util.Objects;
+
 public class ContactData {
     private final String firstName;
     private final String lastName;
@@ -66,5 +68,43 @@ public class ContactData {
 
     public String getGroup() {
         return group;
+    }
+
+    @Override
+    public String toString() {
+        return "ContactData{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", company='" + company + '\'' +
+                ", address='" + address + '\'' +
+                ", mobilePhone='" + mobilePhone + '\'' +
+                ", email='" + email + '\'' +
+                ", dayOfBirth='" + dayOfBirth + '\'' +
+                ", monthOfBirth='" + monthOfBirth + '\'' +
+                ", yearOfBirth='" + yearOfBirth + '\'' +
+                ", group='" + group + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ContactData that = (ContactData) o;
+        return Objects.equals(firstName, that.firstName) &&
+                Objects.equals(lastName, that.lastName) &&
+                Objects.equals(company, that.company) &&
+                Objects.equals(address, that.address) &&
+                Objects.equals(mobilePhone, that.mobilePhone) &&
+                Objects.equals(email, that.email) &&
+                Objects.equals(dayOfBirth, that.dayOfBirth) &&
+                Objects.equals(monthOfBirth, that.monthOfBirth) &&
+                Objects.equals(yearOfBirth, that.yearOfBirth) &&
+                Objects.equals(group, that.group);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(firstName, lastName, company, address, mobilePhone, email, dayOfBirth, monthOfBirth, yearOfBirth, group);
     }
 }
