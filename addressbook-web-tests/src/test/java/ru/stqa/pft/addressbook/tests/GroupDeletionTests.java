@@ -15,10 +15,8 @@ public class GroupDeletionTests extends TestBase {
               (new GroupData("TestGroupNull1", "TestGroupHeader", "TestGroupFooter"));
       before++;
     }
-    appManager.getGroupHelper().selectGroup();
-    appManager.getGroupHelper().deleteGroup();
+    appManager.getGroupHelper().deleteGroup(before-1);
     appManager.getGroupHelper().returnToGroupPage();
-    System.out.println(before);
     int after = appManager.getGroupHelper().getGroupCount();
     Assert.assertEquals(--before, after);
     appManager.getSessionHelper().logOut();

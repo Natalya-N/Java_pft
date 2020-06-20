@@ -15,7 +15,7 @@ public class ContactModificationTests extends TestBase{
                     "26", "May", "1992", "TestGroupNull1"));
             before++;
         }
-        appManager.getContactHelper().selectContact();
+        appManager.getContactHelper().selectContact(before-1);
         appManager.getContactHelper().modifyContact();
         appManager.getContactHelper().feelContactCreation(new ContactData("ModifiedName", "Nechaeva", "ModifiedCompany",
                 "MyAddress", "+79643326754", "testjft@test.ru",
