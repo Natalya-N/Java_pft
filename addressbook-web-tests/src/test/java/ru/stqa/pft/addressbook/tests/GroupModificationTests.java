@@ -4,6 +4,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.GroupData;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class GroupModificationTests extends TestBase{
@@ -16,17 +17,18 @@ public class GroupModificationTests extends TestBase{
                     (new GroupData("TestGroupNull1", "TestGroupHeader", "TestGroupFooter"));
         }
         List<GroupData> groupsBefore = appManager.getGroupHelper().getGroupList();
-        System.out.println(groupsBefore.size());
-        appManager.getGroupHelper().selectGroup(groupsBefore.size()-1);
+        int modifiedGroup = groupsBefore.size()-1;
+        appManager.getGroupHelper().selectGroup(modifiedGroup);
         appManager.getGroupHelper().modifyGroup();
-        appManager.getGroupHelper().fillGroupForm(new GroupData("TestGroupNull12", "TestGroupHeader", "TestGroupFooter1"));
+        GroupData group = new GroupData(groupsBefore.get(modifiedGroup).getId(), "TestGroupNull12", "TestGroupHeader", "TestGroupFooter1");
+        appManager.getGroupHelper().fillGroupForm(group);
         appManager.getGroupHelper().updateGroup();
         appManager.getGroupHelper().returnToGroupPage();
-        appManager.getGroupHelper().selectGroup(groupsBefore.size()-1);
         List<GroupData> groupsAfter = appManager.getGroupHelper().getGroupList();
-        System.out.println(groupsAfter.size());
         Assert.assertEquals(groupsBefore.size(), groupsAfter.size());
-        Assert.assertEquals(groupsBefore, groupsAfter);
+        groupsBefore.remove(modifiedGroup);
+        groupsBefore.add(group);
+        Assert.assertEquals(new HashSet<Object>(groupsBefore), new HashSet<Object>(groupsAfter));
         appManager.getSessionHelper().logOut();
     }
 }
