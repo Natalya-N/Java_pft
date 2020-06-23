@@ -14,13 +14,16 @@ public class GroupCreationTests extends TestBase {
   public void testGroupCreation() throws Exception {
     appManager.getNavigationHelper().goToGroupPage();
     List<GroupData> groupsBefore = appManager.getGroupHelper().getGroupList();
-    GroupData group = new GroupData("TestGroupNull1", "TestGroupHeader", "TestGroupFooter");
+    GroupData group = new GroupData("TestGroupNull13", "TestGroupHeader", "TestGroupFooter");
     appManager.getGroupHelper().createGroup(group);
     List<GroupData> groupsAfter = appManager.getGroupHelper().getGroupList();
     Assert.assertEquals(groupsBefore.size()+1, groupsAfter.size());
     group.setId(groupsAfter.stream().max((Comparator<GroupData>) (o1, o2) -> Integer.compare(o1.getId(), o2.getId())).get().getId());
     groupsBefore.add(group);
-    Assert.assertEquals(new HashSet<Object>(groupsBefore), new HashSet<Object>(groupsAfter));
+    Comparator<? super GroupData> byId = (g1, g2) -> Integer.compare(g1.getId(), g2.getId());
+    groupsBefore.sort(byId);
+    groupsAfter.sort(byId);
+    Assert.assertEquals(groupsBefore, groupsAfter);
     appManager.getSessionHelper().logOut();
   }
 }
