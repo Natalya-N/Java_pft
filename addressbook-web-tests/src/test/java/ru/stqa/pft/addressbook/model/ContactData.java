@@ -14,6 +14,19 @@ public class ContactData {
     private final String yearOfBirth;
     private final String group;
 
+    public ContactData(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.company = null;
+        this.address = null;
+        this.mobilePhone = null;
+        this.email = null;
+        this.dayOfBirth = null;
+        this.monthOfBirth = null;
+        this.yearOfBirth = null;
+        this.group = null;
+    }
+
     public ContactData(String firstName, String lastName, String company,
                        String address, String mobilePhone, String email,
                        String dayOfBirth, String monthOfBirth, String yearOfBirth,
