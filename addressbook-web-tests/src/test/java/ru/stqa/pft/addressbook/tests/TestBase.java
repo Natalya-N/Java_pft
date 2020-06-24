@@ -21,7 +21,7 @@ public class TestBase {
     protected void create(ContactData contactData){
         appManager.goTo().goToAddNewPage();
         appManager.contact().createContact((contactData), true);
-        appManager.goTo().returnToHomePage();
+        appManager.goTo().homePage();
     }
 
 }

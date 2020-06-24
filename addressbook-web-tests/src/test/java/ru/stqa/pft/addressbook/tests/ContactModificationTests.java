@@ -26,7 +26,7 @@ public class ContactModificationTests extends TestBase {
                 "MyAddress", "+79643326754", "testjft@test.ru",
                 "26", "May", "1992", null);
         appManager.contact().modify(modifiedContact, contact);
-        appManager.goTo().returnToHomePage();
+        appManager.goTo().homePage();
         List<ContactData> contactsAfter = appManager.contact().getContactList();
         Assert.assertEquals(contactsBefore.size(), contactsAfter.size());
         contactsBefore.remove(modifiedContact);

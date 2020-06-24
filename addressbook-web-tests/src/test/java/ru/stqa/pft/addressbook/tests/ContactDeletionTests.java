@@ -22,7 +22,7 @@ public class ContactDeletionTests extends TestBase{
     public void testContactDeletion() {
         List<ContactData> contactsBefore = appManager.contact().getContactList();
         appManager.contact().delete(contactsBefore);
-        appManager.goTo().returnToHomePage();
+        appManager.goTo().homePage();
         List<ContactData> contactsAfter = appManager.contact().getContactList();
         Assert.assertEquals(contactsBefore.size()-1, contactsAfter.size());
         contactsBefore.remove(contactsBefore.size()-1);
