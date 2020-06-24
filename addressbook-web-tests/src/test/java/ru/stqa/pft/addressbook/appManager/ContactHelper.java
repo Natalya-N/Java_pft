@@ -41,8 +41,12 @@ public class ContactHelper extends HelperBase {
         wd.findElements(By.name("selected[]")).get(index).click();
     }
 
-    public void modifyContact() {
-        click(By.xpath("//img[@alt='Edit']"));
+    public void modifyContact(int index) {
+        if (index == 0) {
+            click(By.xpath("//img[@alt='Edit']"));
+        } else {
+            click(By.xpath("(//img[@alt='Edit'])[" + (index + 1) + "]"));
+        }
     }
 
     public void updateContact() {
@@ -64,13 +68,14 @@ public class ContactHelper extends HelperBase {
         return isElementPresent(By.name("selected[]"));
     }
 
+    //TO DO: refactor this method. Fails when contact with only names and phone existed
     public List<ContactData> getContactList() {
         List<ContactData> contacts = new ArrayList<ContactData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name = \"entry\"]"));
         for (WebElement element : elements) {
             String contact = element.getText();
             String[] contactParams = contact.split(" ");
-            ContactData contactData = new ContactData(contactParams[1], contactParams[0], null, contactParams[2], contactParams[4], contactParams[3],null,null,null,null);
+            ContactData contactData = new ContactData(contactParams[1], contactParams[0], null, contactParams[2], contactParams[4], contactParams[3], null, null, null, null);
             contacts.add(contactData);
         }
         return contacts;
