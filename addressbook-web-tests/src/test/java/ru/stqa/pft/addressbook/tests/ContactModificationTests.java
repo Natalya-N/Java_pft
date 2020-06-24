@@ -43,6 +43,5 @@ public class ContactModificationTests extends TestBase {
         contactsAfter.sort(byName);
         contactsBefore.sort(byName);
         Assert.assertEquals(contactsBefore, contactsAfter);
-        appManager.getSessionHelper().logOut();
     }
 }

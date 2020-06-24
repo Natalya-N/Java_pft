@@ -6,14 +6,14 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 public class TestBase {
 
-    protected final ApplicationManager appManager = new ApplicationManager();
+    protected static final ApplicationManager appManager = new ApplicationManager();
 
-    @BeforeMethod(alwaysRun = true)
+    @BeforeSuite
     public void setUp() throws Exception {
         appManager.init();
     }
 
-    @AfterMethod(alwaysRun = true)
+    @AfterSuite
     public void tearDown() throws Exception {
         appManager.stop();
     }
