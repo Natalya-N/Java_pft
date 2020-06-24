@@ -37,7 +37,7 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("(//input[@name='submit'])[2]"));
     }
 
-    public void selectContact(int index) {
+    public void select(int index) {
         wd.findElements(By.name("selected[]")).get(index).click();
     }
 
@@ -53,18 +53,22 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("(//input[@name='update'])[2]"));
     }
 
-    public void deleteContact() {
+    public void delete() {
         click(By.xpath("//input[@value='Delete']"));
         wd.switchTo().alert().accept();
     }
 
+    public void delete(List<ContactData> contactsBefore) {
+        select(contactsBefore.size()-1);
+        delete();
+    }
 
     public void createContact(ContactData contactData, boolean creation) {
         feelContactCreation(contactData, creation);
         clickCreateContact();
     }
 
-    public void modifyGroup(int modifiedContact, ContactData contact) {
+    public void modify(int modifiedContact, ContactData contact) {
         modifyContact(modifiedContact);
         feelContactCreation(contact, false);
         updateContact();

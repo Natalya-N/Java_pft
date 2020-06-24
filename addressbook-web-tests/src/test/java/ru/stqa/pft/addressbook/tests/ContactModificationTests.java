@@ -1,8 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.Assert;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.Comparator;
@@ -12,8 +11,8 @@ public class ContactModificationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions(){
-        if (!appManager.getContactHelper().isContactExists()) {
-            createContact(new ContactData("Natalya", "Nechaeva", "MyCompany",
+        if (!appManager.contact().isContactExists()) {
+            create(new ContactData("Natalya", "Nechaeva", "MyCompany",
                     "MyAddress", "+79643326754", "testjft@test.ru",
                     "26", "May", "1992", "TestGroupNull1"));
         }
@@ -21,15 +20,14 @@ public class ContactModificationTests extends TestBase {
 
     @Test
     public void testContactModification() {
-        List<ContactData> contactsBefore = appManager.getContactHelper().getContactList();
+        List<ContactData> contactsBefore = appManager.contact().getContactList();
         int modifiedContact = contactsBefore.size() - 2;
         ContactData contact = new ContactData("AewModifiedName", "Nechaeva", "ModifiedCompany",
                 "MyAddress", "+79643326754", "testjft@test.ru",
                 "26", "May", "1992", null);
-
-        appManager.getContactHelper().modifyGroup(modifiedContact, contact);
-        appManager.getNavigationHelper().returnToHomePage();
-        List<ContactData> contactsAfter = appManager.getContactHelper().getContactList();
+        appManager.contact().modify(modifiedContact, contact);
+        appManager.goTo().returnToHomePage();
+        List<ContactData> contactsAfter = appManager.contact().getContactList();
         Assert.assertEquals(contactsBefore.size(), contactsAfter.size());
         contactsBefore.remove(modifiedContact);
         contactsBefore.add(contact);

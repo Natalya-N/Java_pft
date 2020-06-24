@@ -18,10 +18,10 @@ public class TestBase {
         appManager.stop();
     }
 
-    protected void createContact(ContactData contactData){
-        appManager.getNavigationHelper().goToAddNewPage();
-        appManager.getContactHelper().createContact((contactData), true);
-        appManager.getNavigationHelper().returnToHomePage();
+    protected void create(ContactData contactData){
+        appManager.goTo().goToAddNewPage();
+        appManager.contact().createContact((contactData), true);
+        appManager.goTo().returnToHomePage();
     }
 
 }
