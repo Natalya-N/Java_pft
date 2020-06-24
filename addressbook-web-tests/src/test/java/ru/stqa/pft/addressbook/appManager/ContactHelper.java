@@ -64,6 +64,12 @@ public class ContactHelper extends HelperBase {
         clickCreateContact();
     }
 
+    public void modifyGroup(int modifiedContact, ContactData contact) {
+        modifyContact(modifiedContact);
+        feelContactCreation(contact, false);
+        updateContact();
+    }
+
     public boolean isContactExists() {
         return isElementPresent(By.name("selected[]"));
     }
