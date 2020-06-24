@@ -3,84 +3,105 @@ package ru.stqa.pft.addressbook.model;
 import java.util.Objects;
 
 public class ContactData {
-    private final String firstName;
-    private final String lastName;
-    private final String company;
-    private final String address;
-    private final String mobilePhone;
-    private final String email;
-    private final String dayOfBirth;
-    private final String monthOfBirth;
-    private final String yearOfBirth;
-    private final String group;
-
-    public ContactData(String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.company = null;
-        this.address = null;
-        this.mobilePhone = null;
-        this.email = null;
-        this.dayOfBirth = null;
-        this.monthOfBirth = null;
-        this.yearOfBirth = null;
-        this.group = null;
-    }
-
-    public ContactData(String firstName, String lastName, String company,
-                       String address, String mobilePhone, String email,
-                       String dayOfBirth, String monthOfBirth, String yearOfBirth,
-                       String group) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.company = company;
-        this.address = address;
-        this.mobilePhone = mobilePhone;
-        this.email = email;
-        this.dayOfBirth = dayOfBirth;
-        this.monthOfBirth = monthOfBirth;
-        this.yearOfBirth = yearOfBirth;
-        this.group = group;
-    }
+    private String firstName;
+    private String lastName;
+    private String company;
+    private String address;
+    private String mobilePhone;
+    private String email;
+    private String dayOfBirth;
+    private String monthOfBirth;
+    private String yearOfBirth;
+    private String group;
 
     public String getFirstName() {
         return firstName;
+    }
+
+    public ContactData withFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
     }
 
     public String getLastName() {
         return lastName;
     }
 
+    public ContactData withLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
+
     public String getCompany() {
         return company;
+    }
+
+    public ContactData withCompany(String company) {
+        this.company = company;
+        return this;
     }
 
     public String getAddress() {
         return address;
     }
 
+    public ContactData withAddress(String address) {
+        this.address = address;
+        return this;
+    }
+
     public String getMobilePhone() {
         return mobilePhone;
+    }
+
+    public ContactData withMobilePhone(String mobilePhone) {
+        this.mobilePhone = mobilePhone;
+        return this;
     }
 
     public String getEmail() {
         return email;
     }
 
+    public ContactData withEmail(String email) {
+        this.email = email;
+        return this;
+    }
+
     public String getDayOfBirth() {
         return dayOfBirth;
+    }
+
+    public ContactData withDayOfBirth(String dayOfBirth) {
+        this.dayOfBirth = dayOfBirth;
+        return this;
     }
 
     public String getMonthOfBirth() {
         return monthOfBirth;
     }
 
+    public ContactData withMonthOfBirth(String monthOfBirth) {
+        this.monthOfBirth = monthOfBirth;
+        return this;
+    }
+
     public String getYearOfBirth() {
         return yearOfBirth;
     }
 
+    public ContactData withYearOfBirth(String yearOfBirth) {
+        this.yearOfBirth = yearOfBirth;
+        return this;
+    }
+
     public String getGroup() {
         return group;
+    }
+
+    public ContactData withGroup(String group) {
+        this.group = group;
+        return this;
     }
 
     @Override

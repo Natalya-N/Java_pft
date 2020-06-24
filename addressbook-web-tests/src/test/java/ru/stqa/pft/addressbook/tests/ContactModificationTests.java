@@ -12,24 +12,27 @@ public class ContactModificationTests extends TestBase {
     @BeforeMethod
     public void ensurePreconditions(){
         if (!appManager.contact().isContactExists()) {
-            create(new ContactData("Natalya", "Nechaeva", "MyCompany",
-                    "MyAddress", "+79643326754", "testjft@test.ru",
-                    "26", "May", "1992", "TestGroupNull1"));
+            create(new ContactData()
+                    .withFirstName("Nata").withLastName("Nechaeva").withCompany("Company")
+                    .withAddress("My address").withDayOfBirth("26").withMonthOfBirth("May").withYearOfBirth("1992")
+                    .withEmail("myemail@mailtest.com").withMobilePhone("89649943355").withGroup("test1"));
+
         }
     }
 
     @Test
     public void testContactModification() {
         List<ContactData> contactsBefore = appManager.contact().getContactList();
-        int modifiedContact = contactsBefore.size() - 2;
-        ContactData contact = new ContactData("AewModifiedName", "Nechaeva", "ModifiedCompany",
-                "MyAddress", "+79643326754", "testjft@test.ru",
-                "26", "May", "1992", null);
-        appManager.contact().modify(modifiedContact, contact);
+        int index = contactsBefore.size() - 2;
+        ContactData contact = new ContactData()
+                .withFirstName("ModifiedNata").withLastName("Nechaeva").withCompany("Company")
+                .withAddress("My address").withDayOfBirth("26").withMonthOfBirth("May").withYearOfBirth("1992")
+                .withEmail("myemail@mailtest.com").withMobilePhone("89649943355").withGroup("test1");
+        appManager.contact().modify(index, contact);
         appManager.goTo().homePage();
         List<ContactData> contactsAfter = appManager.contact().getContactList();
         Assert.assertEquals(contactsBefore.size(), contactsAfter.size());
-        contactsBefore.remove(modifiedContact);
+        contactsBefore.remove(index);
         contactsBefore.add(contact);
         Comparator<? super ContactData> byName = new Comparator<ContactData>() {
             @Override

@@ -83,7 +83,7 @@ public class ContactHelper extends HelperBase {
         List<WebElement> elements = wd.findElements(By.cssSelector("tr[name = \"entry\"]"));
         for (WebElement element : elements) {
             List<WebElement> cells = element.findElements(By.tagName("td"));
-            ContactData contactData = new ContactData(cells.get(2).getText(), cells.get(1).getText());
+            ContactData contactData = new ContactData().withFirstName(cells.get(2).getText()).withLastName(cells.get(1).getText());
             contacts.add(contactData);
         }
         return contacts;
