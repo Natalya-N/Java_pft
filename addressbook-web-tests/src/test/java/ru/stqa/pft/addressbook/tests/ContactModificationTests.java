@@ -6,6 +6,7 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class ContactModificationTests extends TestBase {
 
@@ -22,30 +23,19 @@ public class ContactModificationTests extends TestBase {
 
     @Test
     public void testContactModification() {
-        List<ContactData> contactsBefore = appManager.contact().getContactList();
-        int index = contactsBefore.size() - 2;
+        Set<ContactData> contactsBefore = appManager.contact().all();
+        ContactData modifiedContact = contactsBefore.iterator().next();
         ContactData contact = new ContactData()
-                .withFirstName("ModifiedNata").withLastName("Nechaeva").withCompany("Company")
+                .withId(modifiedContact.getId())
+                .withFirstName("RRModifiedNata").withLastName("Nechaeva").withCompany("Company")
                 .withAddress("My address").withDayOfBirth("26").withMonthOfBirth("May").withYearOfBirth("1992")
                 .withEmail("myemail@mailtest.com").withMobilePhone("89649943355").withGroup("test1");
-        appManager.contact().modify(index, contact);
+        appManager.contact().modifyById(contact);
         appManager.goTo().homePage();
-        List<ContactData> contactsAfter = appManager.contact().getContactList();
+        Set<ContactData> contactsAfter = appManager.contact().all();
         Assert.assertEquals(contactsBefore.size(), contactsAfter.size());
-        contactsBefore.remove(index);
+        contactsBefore.remove(modifiedContact);
         contactsBefore.add(contact);
-        Comparator<? super ContactData> byName = new Comparator<ContactData>() {
-            @Override
-            public int compare(ContactData o1, ContactData o2) {
-                int result = o1.getFirstName().compareTo(o2.getFirstName());
-                if (result == 0) {
-                    result = o1.getLastName().compareTo(o2.getLastName());
-                }
-                return result;
-            }
-        };
-        contactsAfter.sort(byName);
-        contactsBefore.sort(byName);
         Assert.assertEquals(contactsBefore, contactsAfter);
     }
 }
