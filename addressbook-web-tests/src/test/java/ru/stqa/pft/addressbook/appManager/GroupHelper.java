@@ -9,7 +9,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class GroupHelper extends HelperBase{
+public class GroupHelper extends HelperBase {
 
     public GroupHelper(WebDriver wd) {
         super(wd);
@@ -47,10 +47,9 @@ public class GroupHelper extends HelperBase{
         wd.findElements(By.name("selected[]")).get(index).click();
     }
 
-    public void selectGroupById (int id) {
+    public void selectGroupById(int id) {
         wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
     }
-
 
     public void modify() {
         click(By.name("edit"));
@@ -79,7 +78,7 @@ public class GroupHelper extends HelperBase{
         deleteGroupById(group.getId());
         returnToGroupPage();
     }
-    
+
     public Set<GroupData> all() {
         Set<GroupData> groups = new HashSet<GroupData>();
         List<WebElement> elements = wd.findElements(By.cssSelector("span.group"));

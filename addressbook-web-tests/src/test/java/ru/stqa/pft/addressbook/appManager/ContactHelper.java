@@ -56,8 +56,8 @@ public class ContactHelper extends HelperBase {
     }
 
     public void modifyContactById(int id) {
-        WebElement element = wd.findElement(By.xpath("(//input[@type='checkbox' and @value='" + id + "'])"));
-        element.findElement(By.xpath("(//td/a/img[@alt='Edit'])")).click();
+        WebElement element = wd.findElement(By.xpath("(//a[@href='edit.php?id=" + id + "'])"));
+        element.click();
     }
 
     public void updateContact() {
@@ -70,7 +70,7 @@ public class ContactHelper extends HelperBase {
     }
 
     public void delete(List<ContactData> contactsBefore) {
-        select(contactsBefore.size()-1);
+        select(contactsBefore.size() - 1);
         delete();
     }
 

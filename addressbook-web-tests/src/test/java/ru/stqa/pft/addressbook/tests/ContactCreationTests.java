@@ -12,9 +12,9 @@ public class ContactCreationTests extends TestBase {
     public void testContactCreation() throws Exception {
         Set<ContactData> contactsBefore = appManager.contact().all();
         ContactData contact = new ContactData()
-                .withFirstName("Nata").withLastName("Nechaeva").withCompany("Company")
+                .withFirstName("Natalya").withLastName("LastName").withCompany("Company")
                 .withAddress("My address").withDayOfBirth("26").withMonthOfBirth("May").withYearOfBirth("1992")
-                .withEmail("myemail@mailtest.com").withMobilePhone("89649943355").withGroup("test1");
+                .withEmail("my123email@mailtest.com").withMobilePhone("87779943355").withGroup("test1");
         create(contact);
         Set<ContactData> contactsAfter = appManager.contact().all();
         Assert.assertEquals(contactsBefore.size() + 1, contactsAfter.size());

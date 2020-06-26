@@ -4,9 +4,9 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-import java.util.*;
+import java.util.Set;
 
-public class GroupModificationTests extends TestBase{
+public class GroupModificationTests extends TestBase {
 
     @BeforeMethod
     public void ensurePreconditions() {
@@ -21,7 +21,8 @@ public class GroupModificationTests extends TestBase{
         Set<GroupData> groupsBefore = appManager.group().all();
         GroupData modifiedGroup = groupsBefore.iterator().next();
         GroupData group = new GroupData()
-                .withId(modifiedGroup.getId()).withName("TestGroupNull12").withHeader("TestGroupHeader").withFooter("TestGroupFooter1");
+                .withId(modifiedGroup.getId()).withName("123TestGroupNull99")
+                .withHeader("TestGroupHeader").withFooter("TestGroupFooter1");
         appManager.group().modify(group);
         Set<GroupData> groupsAfter = appManager.group().all();
         Assert.assertEquals(groupsBefore.size(), groupsAfter.size());
